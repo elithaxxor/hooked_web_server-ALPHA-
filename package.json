@@ -1,0 +1,19 @@
+{
+  "name": "node_server",
+  "version": "1.0.0",
+  "description": "unning the Example",
+  "main": "node_websocket_server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon node_websocket_server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "main": "^1000.0.1",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}

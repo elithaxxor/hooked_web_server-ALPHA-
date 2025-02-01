@@ -18,11 +18,11 @@ async function getVisitorInfo() {
 
         console.log("Visitor Info:", visitorInfo);
 
-        // Update the HTML elements with the fetched information
-        document.getElementById("public-ip").textContent = visitorInfo.publicIP || "Unavailable";
-        document.getElementById("local-ip").textContent = visitorInfo.localIP || "Unavailable";
-        document.getElementById("location").textContent = visitorInfo.location || "Unavailable";
-        document.getElementById("isp").textContent = visitorInfo.isp || "Unavailable";
+        // // Update the HTML elements with the fetched information
+        // document.getElementById("public-ip").textContent = visitorInfo.publicIP || "Unavailable";
+        // document.getElementById("local-ip").textContent = visitorInfo.localIP || "Unavailable";
+        // document.getElementById("location").textContent = visitorInfo.location || "Unavailable";
+        // document.getElementById("isp").textContent = visitorInfo.isp || "Unavailable";
 
         return visitorInfo;
     } catch (error) {
@@ -54,12 +54,14 @@ async function getLocalIP() {
     });
 }
 
-// Function to use the retrieved IP in another process
 function useIP() {
+    const info = getVisitorInfo();
     const publicIp = document.getElementById("public-ip").textContent;
+    console.log("INFO ", info);
+    console.log("publicIP", publicIp)
     alert(`Using Public IP: ${publicIp}`);
+    alert(`Using another Public IP: ${info}`);
 }
-
 // Run the script when the page loads
 window.onload = () => {
     getVisitorInfo();

