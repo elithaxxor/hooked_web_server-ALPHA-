@@ -1,0 +1,110 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .chat-container {
+            width: 90%;
+            max-width: 400px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        .messages {
+            padding: 10px;
+            height: 300px;
+            overflow-y: auto;
+            border-bottom: 1px solid #ddd;
+        }
+        .messages div {
+            margin-bottom: 10px;
+        }
+        .controls {
+            display: flex;
+            padding: 10px;
+            gap: 10px;
+        }
+        input {
+            flex-grow: 1;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 8px 15px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <script src="publicIP.js"></script>
+
+<div class="chat-container">
+    <div class="messages" id="messages"></div>
+    <div class="controls">
+        <input type="text" id="input" placeholder="Type a message...">
+        <button id="send">Send</button>
+    </div>
+</div>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- Link to external JavaScript file -->
+        
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor IP Info</title>
+</head>
+<body>
+    <h2>Visitor IP Information</h2>
+    <p><strong>Public IP:</strong> <span id="public-ip">Loading...</span></p>
+    <p><strong>Local IP:</strong> <span id="local-ip">Loading...</span></p>
+    <p><strong>Location:</strong> <span id="location">Loading...</span></p>
+    <p><strong>ISP:</strong> <span id="isp">Loading...</span></p>
+
+    <button onclick="useIP()">Use IP in Another Function</button>
+
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Example</title>
+    <script src="script.js"></script> <!-- Link to external JavaScript file -->
+</head>
+<body>
+    <h1>WebSocket Communication</h1>
+    <input type="text" id="messageInput" placeholder="Type a message...">
+    <button id="sendButton">Send</button>
+    <div id="messages"></div>
+</body>
+</html>
